@@ -1,11 +1,13 @@
 const express = require('express')
+const path = require('path')
 const app = express()
-const port = 80
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+const { fetchData } = require('./util/fetchData.js')
+
+app.use('/data', express.static(path.join(__dirname, 'public')))
+app.get('/fetch', (req, res) => {
+  fetchData()
 })
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+app.listen(80, () => {
+  console.log('Server listening on port 80')
 })
