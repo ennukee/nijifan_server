@@ -2,14 +2,14 @@ const express = require('express')
 const path = require('path')
 const app = express()
 
-const { fetchSubs, fetchTweets } = require('./util/fetchData.js')
+const { fetchYoutube, fetchTwitter } = require('./util/fetchData.js')
 
-app.use(express.static(path.join(__dirname, 'public')))
-app.get('/subs', async (req, res) => {
-  res.send(await fetchSubs())
+app.use('/storage', express.static(path.join(__dirname, 'public')))
+app.get('/youtube', async (req, res) => {
+  res.send(await fetchYoutube())
 })
-app.get('/tweets', async (req, res) => {
-  res.send(await fetchTweets())
+app.get('/twitter', async (req, res) => {
+  res.send(await fetchTwitter())
 })
 app.listen(80, () => {
   console.log('Server listening on port 80')
