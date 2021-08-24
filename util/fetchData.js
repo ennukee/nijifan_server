@@ -24,7 +24,7 @@ const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY
 
 // ! -- Subscriber Section -- ! //
 async function fetchYoutube() {
-  const url = `https://youtube.googleapis.com/youtube/v3/channels?part=statistics&id=${Object.keys(CHANNEL_IDS).join(',')}&key=${GOOGLE_API_KEY}`
+  const url = `https://youtube.googleapis.com/youtube/v3/channels?part=statistics,snippet&id=${Object.keys(CHANNEL_IDS).join(',')}&key=${GOOGLE_API_KEY}`
   const resp = await fetch(url)
   const json = await resp.json()
   
